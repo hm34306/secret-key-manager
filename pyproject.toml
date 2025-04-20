@@ -29,11 +29,11 @@ yaml = ["pyyaml"]
 keyring = ["keyring"]
 dotenv = ["python-dotenv"]
 dev = ["pytest>=7.0.0", "pytest-cov"]
-all = ["pyyaml", "keyring", "python-dotenv"]
 lint = [
     "ruff == 0.11.4",
     "mypy == 1.10.0",
 ]
+all = ["pyyaml", "keyring", "python-dotenv", "ruff", "mypy", "pytest", "dotenv"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

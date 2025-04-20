@@ -7,6 +7,18 @@ from secret_key_manager.providers.file import JsonFileKeyProvider, YamlFileKeyPr
 # Conditionally import keyring provider
 try:
     from secret_key_manager.providers.keyring_provider import KeyringProvider
-    __all__ = ["EnvKeyProvider", "VaultKeyProvider", "JsonFileKeyProvider", "YamlFileKeyProvider", "KeyringProvider"]
+
+    __all__ = [
+        "EnvKeyProvider",
+        "VaultKeyProvider",
+        "JsonFileKeyProvider",
+        "YamlFileKeyProvider",
+        "KeyringProvider",
+    ]
 except ImportError:
-    __all__ = ["EnvKeyProvider", "VaultKeyProvider", "JsonFileKeyProvider", "YamlFileKeyProvider"]
+    __all__ = [
+        "EnvKeyProvider",
+        "VaultKeyProvider",
+        "JsonFileKeyProvider",
+        "YamlFileKeyProvider",
+    ]

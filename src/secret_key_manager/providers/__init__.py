@@ -1,39 +1,49 @@
 """Built-in key providers for the Secret Key Manager."""
 
+import importlib.util
 from secret_key_manager.providers.env import EnvKeyProvider
 from secret_key_manager.providers.vault import VaultKeyProvider
 from secret_key_manager.providers.file import JsonFileKeyProvider, YamlFileKeyProvider
 
 # Import DotEnv provider
-try:
-    from secret_key_manager.providers.dotenv import DotEnvProvider
+if importlib.util.find_spec("secret_key_manager.providers.dotenv"):
+    from secret_key_manager.providers.dotenv import DotEnvProvider  # noqa: F401
+
     HAS_DOTENV = True
-except ImportError:
+else:
     HAS_DOTENV = False
 
 # Import 1Password provider
-try:
-    from secret_key_manager.providers.onepassword import OnePasswordKeyProvider
+if importlib.util.find_spec("secret_key_manager.providers.onepassword"):
+    from secret_key_manager.providers.onepassword import OnePasswordKeyProvider  # noqa: F401
+
     HAS_1PASSWORD = True
-except (ImportError, RuntimeError):
+else:
     HAS_1PASSWORD = False
 
 # Import LastPass provider
-try:
-    from secret_key_manager.providers.lastpass import LastPassKeyProvider
+if importlib.util.find_spec("secret_key_manager.providers.lastpass"):
+    from secret_key_manager.providers.lastpass import LastPassKeyProvider  # noqa: F401
+
     HAS_LASTPASS = True
-except (ImportError, RuntimeError):
+else:
     HAS_LASTPASS = False
 
 # Conditionally import keyring provider
-try:
-    from secret_key_manager.providers.keyring_provider import KeyringProvider
+if importlib.util.find_spec("secret_key_manager.providers.keyring_provider"):
+    from secret_key_manager.providers.keyring_provider import KeyringProvider  # noqa: F401
+
     HAS_KEYRING = True
-except ImportError:
+else:
     HAS_KEYRING = False
 
 # Build __all__ based on available providers
-__all__ = ["EnvKeyProvider", "VaultKeyProvider", "JsonFileKeyProvider", "YamlFileKeyProvider"]
+__all__ = [
+    "EnvKeyProvider",
+    "VaultKeyProvider",
+    "JsonFileKeyProvider",
+    "YamlFileKeyProvider",
+]
 
 if HAS_DOTENV:
     __all__.append("DotEnvProvider")

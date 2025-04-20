@@ -59,6 +59,7 @@ Thumbs.db
 
 */src/build
 */build
+build
 
 *.py[cod]
 *$py.class
@@ -66,6 +67,7 @@ Thumbs.db
 *.egg
 *.DS_Store
 **.pytest_cache
+.ruff_cache
 __pycache__
 .mypy_cache/
 
