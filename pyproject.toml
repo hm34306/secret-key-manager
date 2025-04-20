@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secret-key-manager"
+version = "0.1.0"
+authors = [
+    {name = "Kickapoo AI Team", email = "info@example.com"},
+]
+description = "A flexible key management system with plugin support"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/secret-key-manager"
+"Bug Tracker" = "https://github.com/yourusername/secret-key-manager/issues"
+
+[project.scripts]
+skm = "secret_key_manager.cli:main"
+
+[project.optional-dependencies]
+yaml = ["pyyaml"]
+keyring = ["keyring"]
+dotenv = ["python-dotenv"]
+dev = ["pytest>=7.0.0", "pytest-cov"]
+all = ["pyyaml", "keyring", "python-dotenv"]
+lint = [
+    "ruff == 0.11.4",
+    "mypy == 1.10.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["secret_key_manager", "secret_key_manager.providers"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
